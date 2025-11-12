@@ -68,19 +68,33 @@ def cumulative_sum(arr):
 # Function 4: Two-Dimensional Arrays - Matrix Transpose
 # This function takes a 2D list (matrix) and returns its transpose.
 def transpose_matrix(matrix):
-    return [[]]
+    full_transposed = []
+    rows = len(matrix)
+    column = len(matrix[0])
+
+    for i in range (column):
+        mini_transpose = []
+        for j in range(rows):
+            mini_transpose.append(matrix[j][i])
+        full_transposed.append(mini_transpose)
+    
+    return full_transposed
+
+
+
 # Function 5: Slicing - Extracting Every Nth Element
 # This function takes a list and a step value N and returns every Nth element.
 
 lst = [1,2,3,4,5,6,7,8]
 def slice_every_nth(lst, step):
     step_list = []
-    j = 0
+    #j = 0
 
-    for i in lst:
-        if j % step == 0:
+    for v, i in enumerate(lst):
+        if v % step == 0:
             step_list.append(i)
-        j += 1
+        #print(v,i)
+        #j += 1
 
     return step_list
 #print(slice_every_nth(lst,2))
@@ -112,4 +126,21 @@ print(dot_product(list1, list2))
 # Function 7: Arithmetic Operations with Arrays - Matrix Multiplication
 # This function takes two 2D lists (matrices) and returns their matrix product.
 def matrix_multiplication(matrix1, matrix2):
-    return [[0, 0], [0, 0]]
+    rows_A = len(matrix1)
+    cols_A = len(matrix1[0])
+    rows_B = len(matrix2)
+    cols_B = len(matrix2[0])
+
+
+    if cols_A != rows_B:
+        print("Matrix multiplication not possible!")
+    else:
+        
+        result = [[0 for _ in range(cols_B)] for _ in range(rows_A)]
+
+        for i in range(rows_A): #[0,1] i =1
+            for j in range(cols_B): # [0,1] j=0
+                for k in range(cols_A): #[0,1,2] k=0
+                    result[i][j] += matrix1[i][k] * matrix2[k][j]
+
+    return result
