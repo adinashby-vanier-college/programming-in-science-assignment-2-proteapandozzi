@@ -83,21 +83,31 @@ def slice_every_nth(lst, step):
         j += 1
 
     return step_list
-print(slice_every_nth(lst,2))
+#print(slice_every_nth(lst,2))
     
     
     
     
     
-    
-    
-    
-
-
 # Function 6: Arithmetic Operations with Arrays - Dot Product
 # This function takes two lists of the same length and returns their dot product.
+list1 = [1,2,3,4]
+list2 = [5,6,7,8]
+
 def dot_product(list1, list2):
-    return 0
+    new_list = [a * b for a, b in zip(list1, list2)]
+    
+    dot_product = 0
+    for i in new_list:
+        dot_product += i
+
+    return dot_product
+print(dot_product(list1, list2))
+
+
+
+
+
 
 # Function 7: Arithmetic Operations with Arrays - Matrix Multiplication
 # This function takes two 2D lists (matrices) and returns their matrix product.
